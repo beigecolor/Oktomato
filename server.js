@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 // Serve Static Assets
 app.use(express.static(__dirname + '/public'));
 
-// 
+// ROUTES
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 });
