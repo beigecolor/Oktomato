@@ -57,12 +57,33 @@ app.get('/api/movie', (req,res) => {
 });
 
 //create movie
-app.post('/api/movie', (req, res) => {
-    const newMovie = new db.Movie({
-        title: req.body.title,
-        year: req.body.year,
-
+// create new book
+app.post('/api/movie', function (req, res) {
+    db.Movie.create(req.body, (err, newMovie) => {
+      if (err) return res.status(500).json({msg: 'Something went wrong. Please try again'});
+      res.json(newMovie);
     });
-});
+  });
+
+  //
+
+// update movie
+app.put('/api/movie/:id', function(req,res){
+    db.Movie.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedMovie) => {
+      if (err) return res.status(400).json({msg: 'Book ID does not exist'});
+      res.json(updatedMovie);
+    });
+  });
+  
+  // delete movie
+  app.delete('/api/movie/:id', function (req, res) {
+    db.Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
+      if (err) return res.status(400).json({msg: 'Book ID does not exist'});
+      res.json(deletedMovie);
+    });
+  });
+  
+  
+  
 // Start Server
 app.listen(process.env.PORT || 3000, () => console.log('movie app listening at http://localhost:3000/'));
