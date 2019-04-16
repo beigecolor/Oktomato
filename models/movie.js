@@ -1,4 +1,4 @@
-const mongoose = rewuire('mongoose');
+const mongoose = require('mongoose');
     Schema = mongoose.Schema;
 
 const MovieSchema = new Schema ({
@@ -7,5 +7,7 @@ const MovieSchema = new Schema ({
     rating: Number,
     review: String
 });
+
+const Movie = mongoose.model('Movie', MovieSchema);
 
 module.exports = Movie;

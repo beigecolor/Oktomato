@@ -7,6 +7,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 
+//Database
+const db = require('./models');
+
 // Serve Static Assets
 app.use(express.static('public'));
 
@@ -38,13 +41,28 @@ let newMovieUUID = 18;
 // Routes //
 
 // root route: localhost:3000//
-app.get('/', (req, res) => {
-    res.send('hello world');
-});
-
+app.get("/", (request, response) => {
+    // send back the response: 'Hello World'
+    response.sendFile('views/index.html', { root : __dirname});
+  });
 //get all movies
 app.get ('/api/movies', (req, res) => res.send(movies));
 
+// get all books
+app.get('/api/movie', (req,res) => {
+    db.Movie.find({}, (err, movie) => {
+        if (err) return console.log (`index error: ${err}`);
+        res.json(movie);
+    });
+});
 
+//create movie
+app.post('/api/movie', (req, res) => {
+    const newMovie = new db.Movie({
+        title: req.body.title,
+        year: req.body.year,
+
+    });
+});
 // Start Server
-app.listen(PORT, () => console.log(`Server  running on port ${PORT}`));
+app.listen(process.env.PORT || 3000, () => console.log('movie app listening at http://localhost:3000/'));

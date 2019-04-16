@@ -19,7 +19,7 @@ const movie_list = [
     {
         title: 'footloose',
         year: 1984,
-        rating 7,
+        rating: 7,
         reviews: 'kevin is great!!'
     }
 ];
