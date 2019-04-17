@@ -15,7 +15,14 @@ body {
     position: relative;
 }
 /* ======= Navigation ====== */
-
+nav {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.1))
+}
+li {
+    font-size: 17px;
+    font-family: font-family: 'Barlow', sans-serif;;
+   
+}
 
 /* ======= Hero / Banner ======= */
 .hero {
@@ -43,6 +50,7 @@ h1 {
 p {
     color: #fff;
     font-size: 20px;
+    font-style: italic;
 }
 
 /*  ======= Modal  ======= */
