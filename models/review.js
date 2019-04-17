@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
     Schema = mongoose.Schema;
 
     const ReviewSchema = new Schema ({
-        name: String
-        review: String
+        name: String,
+        review: String,
     });
 
 const Review = mongoose.model('Review', ReviewSchema);

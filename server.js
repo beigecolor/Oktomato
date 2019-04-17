@@ -48,13 +48,21 @@ app.get("/", (request, response) => {
 //get all movies
 app.get ('/api/movies', (req, res) => res.send(movies));
 
-// get all books
-app.get('/api/movie', (req,res) => {
-    db.Movie.find({}, (err, movie) => {
-        if (err) return console.log (`index error: ${err}`);
-        res.json(movie);
-    });
+// get all movie
+app.get('/api/movie', (req, res) => {
+  db.Movie.find()
+  .populate('review')
+  .exec((err, movie) => {
+    if (err) return console.log(`error: ${err}`);
+    res.json(movie);
+  });
 });
+// app.get('/api/movie', (req,res) => {
+//     db.Movie.find({}, (err, movie) => {
+//         if (err) return console.log (`index error: ${err}`);
+//         res.json(movie);
+//     });
+// });
 
 //create movie
 // create new book
@@ -82,6 +90,10 @@ app.put('/api/movie/:id', function(req,res){
       res.json(deletedMovie);
     });
   });
+
+  //for REview//
+
+
   
   
   

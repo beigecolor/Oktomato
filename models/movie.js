@@ -8,7 +8,7 @@ const MovieSchema = new Schema ({
     review: {
         type: Schema.Types.ObjectId,
         ref: 'Review'
-    }
+    },
 });
 
 const Movie = mongoose.model('Movie', MovieSchema);
