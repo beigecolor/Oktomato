@@ -8,19 +8,19 @@ const movie_list = [
         title: 'the lord of the rings 2',
         year: 2002,
         rating: 8,
-        reviews: 'movie was great'
+        reviewer: "j lipardo"
     },
     {
         title: 'Ghost Busters',
         year: 1984,
         rating: 8,
-        reviews: 'takes me back to childhood'
+        reviewer: "katie jones"
     },
     {
         title: 'footloose',
         year: 1984,
         rating: 7,
-        reviews: 'kevin is great!!'
+        reviewer: "george clooney"
     }
 ];
 
@@ -40,17 +40,41 @@ const review_list = [
 ];
 
 //remove all data that match {} //
+db.Review.deleteMany({}, function(err, reviews) {
+    console.log('removed all reviews');
+    db.Review.create(review_list, function(err, reviews){
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log('recreated all reviews');
+      console.log("created", reviews.length, "reviews");
 
-db.Movie.deleteMany({}, function(err, movie) {
-    if(err) {
-        console.log('error occured in remove', err);
-    } else {
-        console.log('remove all movies');
 
-        db.Movie.create(movie_list, function(err, movie) {
-            if(err) { return console.log('err',err); }
-            console.log("created", movie.length, "movie");
-            process.exit();
+      db.Movie.deleteMany({}, function(err, movies){
+        console.log('removed all movies');
+        movie_list.forEach(function (movieData) {
+          const movie = new db.Movie({
+            title: movieData.title,
+            year: movieData.image,
+            rating: movieData.rating
+          });
+          db.Review.findOne({name: movieData.review}, function (err, foundReview) {
+            // console.log('found review ' + foundReview.name + ' for movie ' + movie.title);
+            if (err) {
+              console.log(err);
+              return;
+            }
+            movie.review = foundReview;
+            movie.save(function(err, savedMovie){
+              if (err) {
+                console.log(err);
+              }
+              // console.log('saved ' + savedMovie.title + ' by ' + foundReview.name);
+            });
+          });
         });
-    }
-});
+      });
+
+    });
+  });
