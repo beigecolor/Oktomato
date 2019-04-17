@@ -5,10 +5,10 @@ const MovieSchema = new Schema ({
     title: String,
     year: String,
     rating: Number,
-    review: {
+    reviews: [{
         type: Schema.Types.ObjectId,
         ref: 'Review'
-    },
+    }],
 });
 
 const Movie = mongoose.model('Movie', MovieSchema);

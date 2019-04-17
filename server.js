@@ -53,12 +53,12 @@ app.get("/", (request, response) => {
     response.sendFile('views/index.html', { root : __dirname});
   });
 //get all movies
-app.get ('/api/movies', (req, res) => res.send(movies));
+// app.get ('/api/movies', (req, res) => res.send(movies));
 
 // get all movie
-app.get('/api/movie', (req, res) => {
-  db.Movie.find()
-  .populate('review')
+app.get('/api/movies', (req, res) => {
+  db.Movie.find({})
+  .populate('reviews')
   .exec((err, movie) => {
     if (err) return console.log(`error: ${err}`);
     res.json(movie);
