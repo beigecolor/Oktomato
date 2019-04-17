@@ -59,9 +59,9 @@ app.get ('/api/movies', (req, res) => res.send(movies));
 app.get('/api/movie', (req, res) => {
   db.Movie.find()
   .populate('review')
-  .exec((err, movie) => {
+  .exec((err, movies) => {
     if (err) return console.log(`error: ${err}`);
-    res.json(movie);
+    res.json(movies);
   });
 });
 // app.get('/api/movie', (req,res) => {
