@@ -27,7 +27,8 @@ function showMovies(response){
         $('#reviews').append(card)
         movie.reviews.forEach(review => {
             let card = `<p>${review.review}</p>`
-            $(`#${movie._id}`).append(card)
+            console.log(review);
+            $(`#${movie._id}`).append(card);
         })
         
     });
