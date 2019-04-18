@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const MovieSchema = new Schema ({
     title: String,
-    year: String,
+    year: Number,
     rating: Number,
     reviews: [{type: Schema.Types.ObjectId, ref: 'Review'}],
 });

@@ -22,6 +22,7 @@ app.use(express.static('public'));
 
 // BodyParser Middleware
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // DAta //
 
@@ -72,7 +73,6 @@ app.get('/api/movies', (req, res) => {
 // });
 
 //create movie
-// create new book
 app.post('/api/movies', function (req, res) {
     db.Movie.create(req.body, (err, newMovie) => {
       if (err) return res.status(500).json({msg: 'Something went wrong. Please try again'});
