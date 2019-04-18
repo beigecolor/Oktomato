@@ -20,8 +20,7 @@ nav {
 }
 li {
     font-size: 17px;
-    font-family: font-family: 'Barlow', sans-serif;;
-   
+    font-family: 'Barlow', sans-serif;;
 }
 
 /* ======= Hero / Banner ======= */
@@ -47,11 +46,17 @@ h1 {
     font-size: 75px;
     text-shadow: 0px 0px 40px rgb(255, 0, 119);
 }
+
+h2 {
+    color: #fff;
+}
+
 p {
     color: #fff;
     font-size: 20px;
     font-style: italic;
 }
+
 
 /*  ======= Modal  ======= */
 .btn {
