@@ -56,9 +56,9 @@ app.get("/", (request, response) => {
 // app.get ('/api/movies', (req, res) => res.send(movies));
 
 // get all movie
-app.get('/api/movie', (req, res) => {
-  db.Movie.find()
-  .populate('review')
+app.get('/api/movies', (req, res) => {
+  db.Movie.find({})
+  .populate('reviews')
   .exec((err, movies) => {
     if (err) return console.log(`error: ${err}`);
     res.json(movies);
@@ -73,7 +73,7 @@ app.get('/api/movie', (req, res) => {
 
 //create movie
 // create new book
-app.post('/api/movie', function (req, res) {
+app.post('/api/movies', function (req, res) {
     db.Movie.create(req.body, (err, newMovie) => {
       if (err) return res.status(500).json({msg: 'Something went wrong. Please try again'});
       res.json(newMovie);
@@ -83,7 +83,7 @@ app.post('/api/movie', function (req, res) {
   //
 
 // update movie
-app.put('/api/movie/:id', function(req,res){
+app.put('/api/movies/:id', function(req,res){
     db.Movie.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedMovie) => {
       if (err) return res.status(400).json({msg: 'Book ID does not exist'});
       res.json(updatedMovie);
@@ -91,7 +91,7 @@ app.put('/api/movie/:id', function(req,res){
   });
   
   // delete movie
-  app.delete('/api/movie/:id', function (req, res) {
+  app.delete('/api/movies/:id', function (req, res) {
     db.Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
       if (err) return res.status(400).json({msg: 'Book ID does not exist'});
       res.json(deletedMovie);

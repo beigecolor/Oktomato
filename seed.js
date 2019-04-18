@@ -59,18 +59,18 @@ db.Review.deleteMany({}, function(err, reviews) {
             year: movieData.image,
             rating: movieData.rating
           });
-          db.Review.findOne({name: movieData.review}, function (err, foundReview) {
+          db.Review.findOne({name: movieData.reviewer}, function (err, foundReview) {
             // console.log('found review ' + foundReview.name + ' for movie ' + movie.title);
             if (err) {
               console.log(err);
               return;
             }
-            movie.review = foundReview;
+            movie.reviews.push(foundReview);
             movie.save(function(err, savedMovie){
               if (err) {
                 console.log(err);
               }
-              // console.log('saved ' + savedMovie.title + ' by ' + foundReview.name);
+            console.log('saved ' + savedMovie);
             });
           });
         });
