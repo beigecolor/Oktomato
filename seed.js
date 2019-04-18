@@ -82,7 +82,7 @@ db.Review.deleteMany({}, function(err, reviews) {
         movie_list.forEach(function (movieData) {
           const movie = new db.Movie({
             title: movieData.title,
-            year: movieData.image,
+            year: movieData.year,
             rating: movieData.rating
           });
           db.Review.findOne({name: movieData.reviewer}, function (err, foundReview) {

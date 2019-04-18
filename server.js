@@ -22,6 +22,7 @@ app.use(express.static('public'));
 
 // BodyParser Middleware
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // DAta //
 
