@@ -65,12 +65,16 @@ app.get('/api/movies', (req, res) => {
     res.json(movies);
   });
 });
-// app.get('/api/movie', (req,res) => {
-//     db.Movie.find({}, (err, movie) => {
-//         if (err) return console.log (`index error: ${err}`);
-//         res.json(movie);
-//     });
-// });
+
+// Get one movie by ID
+app.get('/api/movies/:id', (req,res) => {
+    db.Movie.findById(req.params.id)
+      .populate('reviews')
+      .exec((err, movie) => {
+        if (err) return console.log (`index error: ${err}`);
+        res.json(movie);
+    });
+});
 
 //create movie
 // create new movie
@@ -85,11 +89,26 @@ app.post('/api/movies', function (req, res) {
 
 // update movie
 app.put('/api/movies/:id', function(req,res){
-    db.Movie.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedMovie) => {
-      if (err) return res.status(400).json({msg: 'Book ID does not exist'});
-      res.json(updatedMovie);
-    });
+  db.Movie.findById(req.params.id, (err, foundMovie) => {
+    if (err) return res.status(400).json({msg: 'Book ID does not exist'});
+    db.Review.create({review: req.body.review}, (err, newReview) => {
+      if (err) return res.status(400).json({msg: 'Error creating Review'});
+      foundMovie.reviews = newReview;
+      foundMovie.title = req.body.title;
+      foundMovie.year = req.body.year;
+      foundMovie.save((err, savedMovie) => {
+        if (err) return res.status(400).json({msg: 'Error saving Review'});
+        res.json(savedMovie);
+      })
+    })
   });
+});
+// app.put('/api/movies/:id', function(req,res){
+//     db.Movie.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedMovie) => {
+//       if (err) return res.status(400).json({msg: 'Book ID does not exist'});
+//       res.json(updatedMovie);
+//     });
+//   });
   
   // delete movie
   app.delete('/api/movies/:id', function (req, res) {
