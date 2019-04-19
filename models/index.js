@@ -1,5 +1,7 @@
 let mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/movie-app", {useNewUrlParser: true, useFindAndModify: false});
+const DB_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/movie-app';
+
+mongoose.connect(DB_URL, {useNewUrlParser: true, useFindAndModify: false});
 
 module.exports = {
     Movie: require("./movie.js"),

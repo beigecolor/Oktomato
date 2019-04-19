@@ -128,4 +128,4 @@ app.put('/api/movies/:id', function(req,res){
   
   
 // Start Server
-app.listen(process.env.PORT || 3000, () => console.log('movie app listening at http://localhost:3000/'));
+app.listen(PORT, () => console.log('movie app listening at http://localhost:3000/'));
