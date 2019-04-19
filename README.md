@@ -23,9 +23,9 @@ As a reviewer, I want to
 - edit and delete existing movies/reviews
 
 ### Wireframes
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
-<img src= "/images/Wireframeoktom.jpg">
+
+![Wireframe](/images/Wireframeoktom.jpg)
+
 
 ### ERD Data Models
 picture
