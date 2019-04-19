@@ -22,7 +22,7 @@ As a reviewer, I want to
 - edit and delete existing movies/reviews
 
 ### Wireframes
-# Wireframe <img src= "/images/Wireframeoktom.HEIC">
+# Wireframe <img src= "/images/Wireframeoktom.jpg">
 
 ### ERD Data Models
 
