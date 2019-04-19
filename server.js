@@ -81,7 +81,16 @@ app.get('/api/movies/:id', (req,res) => {
 app.post('/api/movies', function (req, res) {
     db.Movie.create(req.body, (err, newMovie) => {
       if (err) return res.status(500).json({msg: 'Something went wrong. Please try again'});
-      res.json(newMovie);
+      db.Review.create({review: req.body.review}, (err, newReview) => {
+        if (err) return res.status(400).json({msg: 'error creating review'});
+        newMovie.reviews = newReview;
+        newMovie.title = req.body.title;
+        newMovie.year = req.body.year;
+        newMovie.save((err, savedMovie) => {
+          if (err) return res.status(400).json({msg: 'Error creating movie'});
+        res.json(newMovie);
+        });
+      });
     });
   });
 
@@ -103,17 +112,11 @@ app.put('/api/movies/:id', function(req,res){
     })
   });
 });
-// app.put('/api/movies/:id', function(req,res){
-//     db.Movie.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedMovie) => {
-//       if (err) return res.status(400).json({msg: 'Book ID does not exist'});
-//       res.json(updatedMovie);
-//     });
-//   });
-  
+
   // delete movie
   app.delete('/api/movies/:id', function (req, res) {
     db.Movie.findByIdAndRemove(req.params.id, (err, deletedMovie) => {
-      if (err) return res.status(400).json({msg: 'Book ID does not exist'});
+      if (err) return res.status(400).json({msg: 'movie ID does not exist'});
       res.json(deletedMovie);
     });
   });
