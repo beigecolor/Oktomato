@@ -19,11 +19,31 @@ As a browser, I want to
 As a reviewer, I want to
 - create a new movie entry
 - add a review for an existing movie
+- rate movies
 - edit and delete existing movies/reviews
 
 ### Wireframes
-# Wireframe <img src= "/images/Wireframeoktom.jpg">
+![GitHub Logo](/images/logo.png)
+Format: ![Alt Text](url)
+<img src= "/images/Wireframeoktom.jpg">
 
 ### ERD Data Models
+picture
+
+### Stretch Goals
+* User accounts
+* Movie poster images
+* Filter/Sort/Search reviews
+
+## Implementation
+
+### Approach
+We began developing from Outside-In, or building from the front-end into the back-end, and then connecting them.
+
+### Technologies Used
+
+### Unsolved problems
+We struggled to translate our five-star rating into the something the database could understand and save. In the end, we scrapped it.
+
 
 
