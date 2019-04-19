@@ -44,23 +44,23 @@
         <div class="inner-hero">
             <h1>OkTomato</h1>
             <p>for the film critic within</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal"
                 data-whatever="@mdo">Write a Review</button>
         </div>
         <!-- NEW REVIEW Modal  -->
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Write a Review</h5>
+                        <h5 class="modal-title" id="createModalLabel">Write a Review</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="createForm">
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Title</label>
                                 <input type="text" class="form-control" name="title" id="newMovieTitle">
@@ -68,22 +68,6 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Year</label>
                                 <input type="text" class="form-control" name="year" id="newMovieYear">
-                            </div>
-                            
-                                <!-- 5 Stars -->
-                                <div class="rate stars">
-                                    <input type="radio" id="star5" name="rating" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rating" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
-                                    <input type="radio" id="star3" name="rating" value="3" />
-                                    <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="rating" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rating" value="1" />
-                                    <label for="star1" title="text">1 stars</label>
-                                </div>
-
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">Review</label>
@@ -93,7 +77,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id="addFilmButton" class="btn btn-primary">Add</button>
+                        <button type="submit" id="createFilmButton" class="btn btn-primary">Create</button>
                     </div>
                 </div>
             </div>
@@ -133,7 +117,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" id="editFilmButton" class="btn btn-primary">Upate</button>
+                        <button type="submit" id="editFilmButton" class="btn btn-primary">Update</button>
                     </div>
                 </div>
             </div>

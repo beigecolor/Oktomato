@@ -25,10 +25,17 @@ function showMovies(response){
             stars +='⭐'
         }
 
+        let review;
+        if(movie.reviews.length > 0){
+            review = `<p>${movie.reviews[0].review}</p>`
+        } else {
+            review = `<p>No reviews</p>`
+        }
+
         let card = `
             <div id=${movie._id} class="review">
                 <h2>${movie.title} ${stars}</h2>
-                <p>${movie.reviews.review}</p>
+                ${review}
                 <button class="delete">delete</button>
                 <button class="edit" data-toggle="modal" data-target="#editModal">edit</button>
             </div>
@@ -41,11 +48,28 @@ function showMovies(response){
 
 const $reviewContainer = $('#reviews');
 const $editModal = $('#editModal');
+const $createModal = $('#createModal');
 $reviewContainer.on('click', '.delete', handleDeleteClick);
 $reviewContainer.on('click', '.edit', handleEditClick);
 $editModal.on('click', '#editFilmButton', handleEditSubmit);
+$createModal.on('click', '#createFilmButton', handleCreateSubmit);
 
+//Create New Movie Review
+function handleCreateSubmit(e) {
+    console.log('Movie Review Created');
+    const $createForm = $('#createForm');
+    console.log($createForm);
+    // console.log($createForm);
+    $.ajax({
+        method: 'POST',
+        url,
+        success: getAllMovies,
+        data: $createForm.serialize(),
+        error: (err)=>{console.log(err)}
+    });
 
+    $('#createModal .btn-secondary').click()
+}
 // Delete Movie Review
 function handleDeleteClick(e) {
     // Vanilla JavaScript version
