@@ -21,7 +21,25 @@ const movie_list = [
         year: 1984,
         rating: 7,
         reviewer: "george clooney"
-    }
+    },
+    {
+        title: 'the grudge',
+        year: 1998,
+        rating: 5,
+        reviewer: "j lipardo",
+    },
+    {
+        title: 'madmax',
+        year: 1979,
+        rating: 6,
+        reviewer: "tyga",
+    },
+    {
+        title: 'evil dead',
+        year: 1981,
+        rating: 5,
+        reviewer: "bruce campbell",
+    },
 ];
 
 const review_list = [
@@ -36,7 +54,15 @@ const review_list = [
     {
         name: "george clooney",
         review: "im in that movie i think?"
-    }
+    },
+    {
+        name: "tyga",
+        review: "that was dope"
+    },
+    {
+        name: "bruce campbell",
+        review: "lets dance is the liner"
+    },
 ];
 
 //remove all data that match {} //
